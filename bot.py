@@ -94,7 +94,6 @@ async def get_name(message: types.Message):
         await message.answer(parse(vodolei));
     elif name == "♓ Рыбы":
         await message.answer(parse(ryby));
-
     else:
         markup = ReplyKeyboardMarkup(row_width=3, resize_keyboard=True)
         markup.add(btn)
@@ -130,14 +129,12 @@ def get_content(html):
 
 
 def check_tokens():
-    """Проверка доступности переменных окружения."""
     if secret_token is None or len(secret_token) == 0:
         return False
     else:
         return True
 
 def get_api_answer(current_timestamp):
-    """Делает запрос к единственному эндпоинту API-сервиса."""
    
     if current_timestamp is None:
         current_timestamp = int(time.time())
@@ -158,7 +155,6 @@ def get_api_answer(current_timestamp):
         return {}
 
 def send_message(message, bot):
-    """Отправляет сообщение в Telegram чат о статусе проверенной работы."""
     logging.info(f'Сообщение: {message}')
     try:
         bot.send_message(message.from_user.id, text=message)
@@ -168,7 +164,6 @@ def send_message(message, bot):
 
 
 def main():
-    """Основная логика работы бота."""
     console_handler = logging.StreamHandler()
     logger.addHandler(console_handler)
     logger.debug('Бот работает!')
