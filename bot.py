@@ -145,10 +145,8 @@ def get_api_answer(current_timestamp):
             URL,
             headers=HEADERS,
             params=params)
-        # logger.debug(f'Получен код : {homework_status.status_code}')
         if homework_status.status_code != HTTPStatus.OK:
             raise Exception("Сайт не отвечает.")
-        # logging.debug(f'Код : {homework_status.status_code}')
         return homework_status
     except ConnectionError:
         logging.error('Сайт не отвечает.')
